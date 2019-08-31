@@ -1,0 +1,9 @@
+{
+  "name": "sb-coupons-api",
+  "description": "SafeBoda Promo Codes api",
+  "version": "0.0.1",
+  "devDependencies": {},
+  "dependencies": {
+    "dredd": "12.0.5"
+  }
+}
