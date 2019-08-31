@@ -1,0 +1,203 @@
+FORMAT: 1A
+HOST: https://sbcouponsapi.docs.apiary.io/
+
+# sb-coupons-api
+
+sb-coupons-api is the API for SafeBoda for promo codes. Here is possible to do the following:
+* List all promo codes, with a activated codes filter
+
+* Generation of new promo codes for events, with the features:
+    * Can worth a specific amount of ride
+    * Can expire
+    * Can be deactivated
+    * Can be valid when user’s pickup or destination is within x radius of the event venue:
+        * The event contains its venue
+        * A maximum radius area
+        * Lattitude and Longittude references
+
+* Updates, deletes promo codes
+
+* Tests the validity of the promo code by passing a pickup origin and destination
+
+
+## Promo Codes collection [/V1/promo-codes{?active}{?page}]
+
+### List All Promo Codes [GET]
+
++ Parameters
+    + active (optional, boolean, `true`) ... Shows only active promo codes.
+    + page (optional, number, `1`) ... Page number of the current view.
+
++ Request (application/json)
+
+    + Headers
+
+            Accept: application/json
+            ApiKey: 01b8b0dd-974a-4fd7-b7c1-9884fdbdde92
+            Token: 2842b128-06b3-427b-b92e-37673684486a
+
++ Response 200 (application/json)
+
+        [
+            {
+                "code": "SB-WEEKEND",
+                "active": true,
+                "worths_up_to": 100,
+                "published_at": "2019-08-31T08:40:51.620Z",
+                "expires_at": "2019-09-30T08:40:51.620Z",
+                "event_area": {
+                    "venue": "Terman Ave, Kampala, Uganda",
+                    "radius": 3000,
+                    "lat": 0.317455,
+                    "lon": 32.58095,
+                }
+            }
+        ]
+
+### Create a New Promo Code [POST]
+
++ Request (application/json)
+
+    + Headers
+
+            Accept: application/json
+            ApiKey: 01b8b0dd-974a-4fd7-b7c1-9884fdbdde92
+            Token: 2842b128-06b3-427b-b92e-37673684486a
+
+    + Body
+
+             {
+                "code": "SB-WEEKEND",
+                "active": true,
+                "worths_up_to": 100,
+                "published_at": "2019-08-31T08:40:51.620Z",
+                "expires_at": "2019-09-30T08:40:51.620Z",
+                "event_area": {
+                    "venue": "Terman Ave, Kampala, Uganda",
+                    "radius": 3000,
+                    "lat": 0.317455,
+                    "lon": 32.58095,
+                }
+            }
+
++ Response 201 (application/json)
+
+        {
+            "status": "OK"
+        }
+
+
+## Gets, updates and deletes Promo Codes [/V1/promo-codes/{code}]
+
+
+### Gets a Promo Code [GET]
+
++ Request (application/json)
+
+    + Headers
+
+            Accept: application/json
+            ApiKey: 01b8b0dd-974a-4fd7-b7c1-9884fdbdde92
+            Token: 2842b128-06b3-427b-b92e-37673684486a
+
++ Response 200 (application/json)
+
+        {
+            "code": "SB-WEEKEND",
+            "active": true,
+            "worths_up_to": 100,
+            "published_at": "2019-08-31T08:40:51.620Z",
+            "expires_at": "2019-09-30T08:40:51.620Z",
+            "event_area": {
+                "venue": "Terman Ave, Kampala, Uganda",
+                "radius": 3000,
+                "lat": 0.317455,
+                "lon": 32.58095,
+            }
+        }
+
+### Updates a Promo Code [PUT]
+
++ Request (application/json)
+
+    + Headers
+
+            Accept: application/json
+            ApiKey: 01b8b0dd-974a-4fd7-b7c1-9884fdbdde92
+            Token: 2842b128-06b3-427b-b92e-37673684486a
+
+    + Body
+
+            {
+                "code": "SB-WEEKEND",
+                "active": true,
+                "worths_up_to": 100,
+                "published_at": "2019-08-31T08:40:51.620Z",
+                "expires_at": "2019-09-30T08:40:51.620Z",
+                "event_area": {
+                    "venue": "Terman Ave, Kampala, Uganda",
+                    "radius": 3000,
+                    "lat": 0.317455,
+                    "lon": 32.58095,
+                }
+            }
+
++ Response 200 (application/json)
+
+        {
+            "status": "OK"
+        }
+
+
+### Deletes a Promo Code [DELETE]
+
++ Request JSON Message
+
+    + Headers
+
+            Accept: application/json
+            ApiKey: 01b8b0dd-974a-4fd7-b7c1-9884fdbdde92
+            Token: 2842b128-06b3-427b-b92e-37673684486a
+
++ Response 204
+
+## Promo Code validation [/V1/promo-codes/{code}/validate{?pickup_venue}{?destination_venue}]
+
+### Validate [GET]
+
++ Parameters
+    + pickup_venue (required, string, `Nsambya Rd, Kampala, Uganda`) ... Pickup venue.
+    + destination_venue (required, string, `Terman Ave, Kampala, Uganda`) ... Destination venue.
+
+
++ Request (application/json)
+
+    + Headers
+
+            Accept: application/json
+            ApiKey: 01b8b0dd-974a-4fd7-b7c1-9884fdbdde92
+            Token: 2842b128-06b3-427b-b92e-37673684486a
+
++ Response 200 (application/json)
+
+        {
+            "code": "SB-WEEKEND",
+            "active": true,
+            "worths_up_to": 100,
+            "published_at": "2019-08-31T08:40:51.620Z",
+            "expires_at": "2019-09-30T08:40:51.620Z",
+            "event_area": {
+                "venue": "Terman Ave, Kampala, Uganda",
+                "radius": 3000,
+                "lat": 0.317455,
+                "lon": 32.58095,
+            },
+            "polyline": "_p~iF~ps|U_ulLnnqC_mqNvxq`@"
+        }
+
+
+## Health Check [/health]
+
+### Check API's health [GET]
+
++ Response 200
