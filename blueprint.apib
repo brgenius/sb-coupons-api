@@ -32,7 +32,6 @@ sb-coupons-api is the API for SafeBoda for promo codes. Here is possible to do t
 
     + Headers
 
-            Accept: application/json
             ApiKey: 01b8b0dd-974a-4fd7-b7c1-9884fdbdde92
             Token: 2842b128-06b3-427b-b92e-37673684486a
 
@@ -60,7 +59,6 @@ sb-coupons-api is the API for SafeBoda for promo codes. Here is possible to do t
 
     + Headers
 
-            Accept: application/json
             ApiKey: 01b8b0dd-974a-4fd7-b7c1-9884fdbdde92
             Token: 2842b128-06b3-427b-b92e-37673684486a
 
@@ -92,11 +90,13 @@ sb-coupons-api is the API for SafeBoda for promo codes. Here is possible to do t
 
 ### Gets a Promo Code [GET]
 
++ Parameters
+    + code (required, string, `SB-WEEKEND`) ... Promo code.
+
 + Request (application/json)
 
     + Headers
 
-            Accept: application/json
             ApiKey: 01b8b0dd-974a-4fd7-b7c1-9884fdbdde92
             Token: 2842b128-06b3-427b-b92e-37673684486a
 
@@ -118,11 +118,13 @@ sb-coupons-api is the API for SafeBoda for promo codes. Here is possible to do t
 
 ### Updates a Promo Code [PUT]
 
++ Parameters
+    + code (required, string, `SB-WEEKEND`) ... Promo code.
+
 + Request (application/json)
 
     + Headers
 
-            Accept: application/json
             ApiKey: 01b8b0dd-974a-4fd7-b7c1-9884fdbdde92
             Token: 2842b128-06b3-427b-b92e-37673684486a
 
@@ -151,11 +153,13 @@ sb-coupons-api is the API for SafeBoda for promo codes. Here is possible to do t
 
 ### Deletes a Promo Code [DELETE]
 
++ Parameters
+    + code (required, string, `SB-WEEKEND`) ... Promo code.
+
 + Request JSON Message
 
     + Headers
 
-            Accept: application/json
             ApiKey: 01b8b0dd-974a-4fd7-b7c1-9884fdbdde92
             Token: 2842b128-06b3-427b-b92e-37673684486a
 
@@ -166,6 +170,7 @@ sb-coupons-api is the API for SafeBoda for promo codes. Here is possible to do t
 ### Validate [GET]
 
 + Parameters
+    + code (required, string, `SB-WEEKEND`) ... Promo code.
     + pickup_venue (required, string, `Nsambya Rd, Kampala, Uganda`) ... Pickup venue.
     + destination_venue (required, string, `Terman Ave, Kampala, Uganda`) ... Destination venue.
 
@@ -174,7 +179,6 @@ sb-coupons-api is the API for SafeBoda for promo codes. Here is possible to do t
 
     + Headers
 
-            Accept: application/json
             ApiKey: 01b8b0dd-974a-4fd7-b7c1-9884fdbdde92
             Token: 2842b128-06b3-427b-b92e-37673684486a
 
