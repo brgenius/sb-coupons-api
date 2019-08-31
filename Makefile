@@ -3,4 +3,4 @@ install-yarn:
 	yarn install
 
 test-api-docs:
-	dredd ./blueprint.apib http://127.0.0.1:4000
+	dredd ./apiary.apib http://127.0.0.1:4000
