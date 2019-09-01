@@ -10,6 +10,7 @@ defmodule SbCouponsApi.Application do
     children = [
       # Starts a worker by calling: SbCouponsApi.Worker.start_link(arg)
       # {SbCouponsApi.Worker, arg}
+      SbCouponsApi.Maru
     ]
 
     # See https://hexdocs.pm/elixir/Supervisor.html

@@ -28,3 +28,14 @@ use Mix.Config
 # here (which is why it is important to import them last).
 #
 #     import_config "#{Mix.env()}.exs"
+config :sb_coupons_api, SbCouponsApi.Maru,
+  adapter: Plug.Adapters.Cowboy2,
+  plug: SbCouponsApi.API,
+  scheme: :http,
+  port: 4000
+
+config :sb_coupons_api, maru_servers: [SbCouponsApi.Maru]
+
+config :logger, handle_sasl_reports: true
+
+config :logger, level: :debug
