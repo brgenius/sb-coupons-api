@@ -1,4 +1,4 @@
-# sb-coupons-api
+# SbCouponsApi
 
 [![Apiary Documentation](https://img.shields.io/badge/Apiary-Documented-blue.svg)](https://sbcouponsapi.docs.apiary.io/)
 

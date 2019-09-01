@@ -4,3 +4,6 @@ install-yarn:
 
 test-api-docs:
 	dredd ./apiary.apib http://127.0.0.1:4000
+
+run:
+	iex -S mix
