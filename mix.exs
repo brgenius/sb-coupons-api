@@ -23,6 +23,11 @@ defmodule SbCouponsApi.MixProject do
   # Run "mix help deps" to learn about dependencies.
   defp deps do
     [
+      {:envy, "~> 1.1.1"},
+      {:ecto_sql, "~> 3.0"},
+      {:ecto_soft_delete, "~> 1.0"},
+      {:money, "~> 1.4"},
+      {:postgrex, ">= 0.0.0"},
       {:espec, "~> 1.7.0", only: :test},
       {:maru, "~> 0.13"},
       {:plug_cowboy, "~> 2.0"},

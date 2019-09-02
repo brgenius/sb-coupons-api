@@ -28,11 +28,23 @@ use Mix.Config
 # here (which is why it is important to import them last).
 #
 #     import_config "#{Mix.env()}.exs"
+
+config :sb_coupons_api, ecto_repos: [SbCouponsApi.Repo]
+
+config :sb_coupons_api, SbCouponsApi.Repo,
+  database: "sb_coupons_#{Mix.env()}",
+  username: System.get_env("POSTGRES_USER"),
+  password: System.get_env("POSTGRES_PASSWORD"),
+  hostname: System.get_env("POSTGRES_HOSTNAME"),
+  port: System.get_env("POSTGRES_PORT") || "5432"
+
+config :money, default_currency: :UGX
+
 config :sb_coupons_api, SbCouponsApi.Maru,
   adapter: Plug.Adapters.Cowboy2,
   plug: SbCouponsApi.API,
   scheme: :http,
-  port: 4000
+  port: System.get_env("PORT") || 4000
 
 config :sb_coupons_api, maru_servers: [SbCouponsApi.Maru]
 

@@ -6,15 +6,21 @@ install-elixir:
 	brew install elixir
 
 install:
-		mix deps.get
+	mix deps.get
 
-setup: install-yarn install-elixir install
+setup: install-yarn install-elixir install create-db migrate
 
 test-api-docs:
 	dredd ./apiary.apib http://127.0.0.1:4000
 
 test:
 	MIX_ENV=test mix espec
+
+create-db:
+	mix ecto.create
+
+migrate:
+	mix ecto.migrate
 
 compile:
 	mix compile
@@ -23,3 +29,21 @@ run:
 	iex -S mix
 
 build-and-run: compile run
+
+compose-detached-db:
+	docker-compose run -d --service-ports sb-pg
+
+compose-create-db:
+	docker-compose run --entrypoint="make create-db" api
+
+compose-migrate-db:
+	docker-compose run --entrypoint="make migrate" api
+
+compose-build:
+	docker-compose build
+
+compose-run:
+	docker-compose run --rm --service-ports api
+
+compose-build-up:
+	docker-compose up --build api

@@ -6,10 +6,15 @@ defmodule SbCouponsApi.Application do
   use Application
 
   def start(_type, _args) do
+    unless Mix.env() == :prod do
+      Envy.auto_load()
+    end
+
     # List all child processes to be supervised
     children = [
       # Starts a worker by calling: SbCouponsApi.Worker.start_link(arg)
       # {SbCouponsApi.Worker, arg}
+      SbCouponsApi.Repo,
       SbCouponsApi.Maru
     ]
 

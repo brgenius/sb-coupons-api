@@ -1,0 +1,27 @@
+version: '3.7'
+
+services:
+
+  sb-pg:
+      image: postgres:9.5
+      container_name: sb-pg
+      restart: always
+      ports:
+        - 5432:5432
+      environment:
+        POSTGRES_HOSTNAME: sb-pg
+        POSTGRES_USER: postgres
+        POSTGRES_PASSWORD: dasdafsa
+
+  api:
+      build: .
+      environment:
+        POSTGRES_HOSTNAME: sb-pg
+        POSTGRES_USER: postgres
+        POSTGRES_PASSWORD: dasdafsa
+        
+      ports:
+        - 4000:4000
+      command: make run
+      depends_on:
+        - sb-pg

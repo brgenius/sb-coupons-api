@@ -15,7 +15,7 @@ defmodule SbCouponsApi.API do
 
   rescue_from :all do
     conn
-    # |> IO.inspect()
+    |> IO.inspect()
     |> put_status(500)
     |> text("Server Error")
   end
