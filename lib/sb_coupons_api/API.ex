@@ -10,7 +10,7 @@ defmodule SbCouponsApi.API do
   before do
     plug(SbCouponsApi.Auth, at: "/V1")
 
-    mount(Router)
+    mount(SbCouponsApi.Router)
   end
 
   rescue_from :all do
