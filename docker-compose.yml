@@ -1,4 +1,4 @@
-version: '3.7'
+version: '3.2'
 
 services:
 
@@ -19,9 +19,8 @@ services:
         POSTGRES_HOSTNAME: sb-pg
         POSTGRES_USER: postgres
         POSTGRES_PASSWORD: dasdafsa
-        
       ports:
-        - 4000:4000
+        - "4000:4000"
       command: make run
       depends_on:
         - sb-pg

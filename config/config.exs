@@ -41,9 +41,10 @@ config :sb_coupons_api, SbCouponsApi.Repo,
 config :money, default_currency: :UGX
 
 config :sb_coupons_api, SbCouponsApi.Maru,
-  adapter: Plug.Adapters.Cowboy2,
+  adapter: Plug.Adapters.Cowboy,
   plug: SbCouponsApi.API,
   scheme: :http,
+  ip: {0, 0, 0, 0},
   port: System.get_env("PORT") || 4000
 
 config :sb_coupons_api, maru_servers: [SbCouponsApi.Maru]
