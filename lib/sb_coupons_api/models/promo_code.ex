@@ -5,6 +5,8 @@ defmodule SbCouponsApi.Modules.PromoCode do
   import Ecto.Changeset
   import Ecto.Query, only: [from: 2]
 
+  import SbCouponsApi.Helpers.Pager
+
   schema "promo_codes" do
     field(:code, :string)
     field(:active, :boolean)
@@ -23,7 +25,18 @@ defmodule SbCouponsApi.Modules.PromoCode do
       order_by: [desc: :expiration],
       preload: [event: e]
     )
+    |> paginate(page, 30)
     |> SbCouponsApi.Repo.all()
+  end
+
+  def get_cached_by_code(code) do
+    SbCouponsApi.CacheableRepo.get_by(__MODULE__, code: code)
+  end
+
+  def delete_by_code(code) do
+    SbCouponsApi.Repo.get_by(__MODULE__, code: code)
+    |> SbCouponsApi.Cache.delete()
+    |> SbCouponsApi.Repo.soft_delete()
   end
 
   def changeset(promo_code, attrs) do

@@ -51,6 +51,10 @@ config :sb_coupons_api, SbCouponsApi.Maru,
 
 config :sb_coupons_api, maru_servers: [SbCouponsApi.Maru]
 
+config :sb_coupons_api, SbCouponsApi.Cache,
+  n_shards: 2,
+  gc_interval: 600
+
 config :logger, handle_sasl_reports: true
 
 config :logger, level: :debug

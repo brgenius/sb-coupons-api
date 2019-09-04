@@ -14,6 +14,7 @@ defmodule SbCouponsApi.Application do
     children = [
       # Starts a worker by calling: SbCouponsApi.Worker.start_link(arg)
       # {SbCouponsApi.Worker, arg}
+      SbCouponsApi.Cache,
       SbCouponsApi.Repo,
       SbCouponsApi.Maru
     ]
