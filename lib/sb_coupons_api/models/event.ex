@@ -7,7 +7,7 @@ defmodule SbCouponsApi.Modules.Event do
     field(:venue, :string)
     field(:radius, :integer)
 
-    has_many(:promo_codes, SbCouponsApi.PromoCode)
+    has_many(:promo_codes, SbCouponsApi.Modules.PromoCode)
 
     timestamps(type: :utc_datetime)
     soft_delete_schema()

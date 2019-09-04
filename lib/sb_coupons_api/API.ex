@@ -13,10 +13,10 @@ defmodule SbCouponsApi.API do
     mount(SbCouponsApi.Router)
   end
 
-  rescue_from :all do
-    conn
-    |> IO.inspect()
-    |> put_status(500)
-    |> text("Server Error")
-  end
+  # rescue_from :all do
+  #   conn
+  #   |> IO.inspect()
+  #   |> put_status(500)
+  #   |> text("Server Error")
+  # end
 end

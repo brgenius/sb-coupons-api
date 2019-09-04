@@ -28,6 +28,7 @@ defmodule SbCouponsApi.MixProject do
       {:ecto_soft_delete, "~> 1.0"},
       {:money, "~> 1.4"},
       {:postgrex, ">= 0.0.0"},
+      {:nebulex_ecto, "~> 0.1"},
       {:espec, "~> 1.7.0", only: :test},
       {:maru, "~> 0.13"},
       {:plug_cowboy, "~> 2.0"},

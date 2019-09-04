@@ -38,6 +38,8 @@ config :sb_coupons_api, SbCouponsApi.Repo,
   hostname: System.get_env("POSTGRES_HOSTNAME"),
   port: System.get_env("POSTGRES_PORT") || "5432"
 
+config :postgrex, :json_library, Jason
+
 config :money, default_currency: :UGX
 
 config :sb_coupons_api, SbCouponsApi.Maru,

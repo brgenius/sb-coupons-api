@@ -25,6 +25,16 @@ defmodule SbCouponsApi.Router do
           json(conn, SbCouponsApi.Services.PromoCode.get(params[:code]))
         end
 
+        desc("Creates a Promo Code")
+
+        params do
+          requires(:code, type: :string)
+        end
+
+        post do
+          json(conn, SbCouponsApi.Services.PromoCode.create(params[:code]))
+        end
+
         desc("Updates a Promo Code")
 
         params do
