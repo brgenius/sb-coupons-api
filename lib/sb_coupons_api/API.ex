@@ -7,6 +7,8 @@ defmodule SbCouponsApi.API do
     parsers: [:json]
   )
 
+  mount(SbCouponsApi.SystemRouter)
+
   before do
     plug(SbCouponsApi.Auth, at: "/V1")
 

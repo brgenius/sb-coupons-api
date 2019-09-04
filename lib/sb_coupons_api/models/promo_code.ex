@@ -33,6 +33,13 @@ defmodule SbCouponsApi.Modules.PromoCode do
     SbCouponsApi.CacheableRepo.get_by(__MODULE__, code: code)
   end
 
+  def upsert_cached(promo_code) do
+    # __MODULE__({promo_code})
+
+    changeset(__MODULE__, promo_code)
+    |> SbCouponsApi.CacheableRepo.insert_or_update()
+  end
+
   def delete_by_code(code) do
     SbCouponsApi.Repo.get_by(__MODULE__, code: code)
     |> SbCouponsApi.Cache.delete()
@@ -44,5 +51,6 @@ defmodule SbCouponsApi.Modules.PromoCode do
     |> cast(attrs, [:code, :active, :expiration, :worths_up_to, :event_id])
     |> validate_required([:code, :expiration, :worths_up_to, :event_id])
     |> unique_constraint(:code)
+    |> cast_assoc(:event)
   end
 end

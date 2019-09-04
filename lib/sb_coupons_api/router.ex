@@ -29,16 +29,35 @@ defmodule SbCouponsApi.Router do
 
         params do
           requires(:code, type: :string)
+          requires(:worths_up_to, type: :integer)
+          requires(:expires_at, type: :string)
+
+          requires :event, type: Map do
+            requires(:venue, type: :string)
+            requires(:radius, type: :integer)
+            requires(:lat, type: :float)
+            requires(:lon, type: :float)
+          end
         end
 
         post do
-          json(conn, SbCouponsApi.Services.PromoCode.create(params[:code]))
+          json(conn, SbCouponsApi.Services.PromoCode.create(params))
         end
 
         desc("Updates a Promo Code")
 
         params do
+          requires(:id, type: :integer)
           requires(:code, type: :string)
+          requires(:worths_up_to, type: :integer)
+          requires(:expires_at, type: :string)
+
+          requires :event, type: Map do
+            requires(:venue, type: :string)
+            requires(:radius, type: :integer)
+            requires(:lat, type: :float)
+            requires(:lon, type: :float)
+          end
         end
 
         put do
