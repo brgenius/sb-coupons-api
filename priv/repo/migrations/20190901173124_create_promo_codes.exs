@@ -15,7 +15,7 @@ defmodule SbCouponsApi.Repo.Migrations.CreatePromoCodes do
     create table(:promo_codes) do
       add(:code, :string, null: false)
       add(:active, :boolean, default: true)
-      add(:expiration, :utc_datetime, null: false)
+      add(:expires_at, :utc_datetime, null: false)
       add(:worths_up_to, :integer, null: false)
       add(:event_id, references(:events))
 

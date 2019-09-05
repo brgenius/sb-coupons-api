@@ -12,13 +12,12 @@ defmodule SbCouponsApi.Services.PromoCode do
   def create(promo_code) do
     promo_code
     |> IO.inspect()
-    |> PromoCode.upsert_cached(promo_code)
+    |> PromoCode.create()
   end
 
   def update(promo_code) do
     promo_code
-    |> IO.inspect()
-    |> PromoCode.upsert_cached(promo_code)
+    |> PromoCode.update()
   end
 
   def delete_by_code(code) do

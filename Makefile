@@ -16,11 +16,16 @@ test-api-docs:
 test:
 	MIX_ENV=test mix espec
 
+drop-db:
+	mix ecto.drop
+
 create-db:
 	mix ecto.create
 
 migrate:
 	mix ecto.migrate
+
+reset-db: drop-db create-db migrate
 
 compile:
 	mix compile

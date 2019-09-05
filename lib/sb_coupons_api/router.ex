@@ -14,6 +14,27 @@ defmodule SbCouponsApi.Router do
         json(conn, SbCouponsApi.Services.PromoCode.list(params[:active], params[:page]))
       end
 
+      desc("Creates a Promo Code")
+
+      params do
+        requires(:code, type: :string)
+        requires(:worths_up_to, type: :integer)
+        requires(:expires_at, type: :string)
+
+        requires :event, type: Map do
+          requires(:venue, type: :string)
+          requires(:radius, type: :integer)
+          requires(:lat, type: :float)
+          requires(:lon, type: :float)
+        end
+      end
+
+      post do
+        conn
+        |> put_status(201)
+        |> json(SbCouponsApi.Services.PromoCode.create(params))
+      end
+
       route_param :code, type: :string do
         desc("Gets a Promo Code")
 
@@ -25,25 +46,6 @@ defmodule SbCouponsApi.Router do
           json(conn, SbCouponsApi.Services.PromoCode.get(params[:code]))
         end
 
-        desc("Creates a Promo Code")
-
-        params do
-          requires(:code, type: :string)
-          requires(:worths_up_to, type: :integer)
-          requires(:expires_at, type: :string)
-
-          requires :event, type: Map do
-            requires(:venue, type: :string)
-            requires(:radius, type: :integer)
-            requires(:lat, type: :float)
-            requires(:lon, type: :float)
-          end
-        end
-
-        post do
-          json(conn, SbCouponsApi.Services.PromoCode.create(params))
-        end
-
         desc("Updates a Promo Code")
 
         params do
@@ -53,6 +55,7 @@ defmodule SbCouponsApi.Router do
           requires(:expires_at, type: :string)
 
           requires :event, type: Map do
+            requires(:id, type: :integer)
             requires(:venue, type: :string)
             requires(:radius, type: :integer)
             requires(:lat, type: :float)
@@ -61,7 +64,7 @@ defmodule SbCouponsApi.Router do
         end
 
         put do
-          json(conn, SbCouponsApi.Services.PromoCode.update(params[:code]))
+          json(conn, SbCouponsApi.Services.PromoCode.update(params))
         end
 
         desc("Deletes a Promo Code")
@@ -71,7 +74,7 @@ defmodule SbCouponsApi.Router do
         end
 
         delete do
-          json(conn, SbCouponsApi.Services.PromoCode.delete(params[:code]))
+          json(conn, SbCouponsApi.Services.PromoCode.delete_by_code(params[:code]))
         end
       end
     end

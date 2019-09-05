@@ -39,6 +39,12 @@ config :sb_coupons_api, SbCouponsApi.Repo,
   port: System.get_env("POSTGRES_PORT") || "5432"
 
 config :postgrex, :json_library, Jason
+config :sb_coupons_api, :json_library, Jason
+# config :sb_coupons_api, SbCouponsApi.Repo, types: Postgrex.Extensions.JSON
+
+# Postgrex.Types.define(Postgrex.Extensions.JSON, [] ++ Ecto.Adapters.Postgres.extensions(),
+#   json: Jason
+# )
 
 config :money, default_currency: :UGX
 

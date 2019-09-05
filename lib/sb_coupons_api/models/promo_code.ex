@@ -1,4 +1,8 @@
+require Helpers.MoneyEncoder
+
 defmodule SbCouponsApi.Modules.PromoCode do
+  alias SbCouponsApi.Modules.PromoCode, as: PromoCode
+
   use Ecto.Schema
 
   import Ecto.SoftDelete.Schema
@@ -7,10 +11,11 @@ defmodule SbCouponsApi.Modules.PromoCode do
 
   import SbCouponsApi.Helpers.Pager
 
+  @derive {Jason.Encoder, except: [:__meta__, :deleted_at]}
   schema "promo_codes" do
     field(:code, :string)
     field(:active, :boolean)
-    field(:expiration, :utc_datetime)
+    field(:expires_at, :utc_datetime)
     field(:worths_up_to, Money.Ecto.Amount.Type)
     belongs_to(:event, SbCouponsApi.Modules.Event)
 
@@ -22,7 +27,7 @@ defmodule SbCouponsApi.Modules.PromoCode do
     from(p in __MODULE__,
       join: e in assoc(p, :event),
       where: [active: ^active],
-      order_by: [desc: :expiration],
+      order_by: [desc: :expires_at],
       preload: [event: e]
     )
     |> paginate(page, 30)
@@ -30,14 +35,22 @@ defmodule SbCouponsApi.Modules.PromoCode do
   end
 
   def get_cached_by_code(code) do
-    SbCouponsApi.CacheableRepo.get_by(__MODULE__, code: code)
+    __MODULE__
+    |> SbCouponsApi.CacheableRepo.get_by(code: code)
+    |> SbCouponsApi.Repo.preload(:event)
   end
 
-  def upsert_cached(promo_code) do
-    # __MODULE__({promo_code})
-
-    changeset(__MODULE__, promo_code)
+  def create(promo_code) do
+    changeset(%PromoCode{}, promo_code)
     |> SbCouponsApi.CacheableRepo.insert_or_update()
+  end
+
+  def update(args) do
+    __MODULE__
+    |> SbCouponsApi.Repo.get!(args[:id])
+    |> SbCouponsApi.Repo.preload(:event)
+    |> changeset(args)
+    |> SbCouponsApi.CacheableRepo.update()
   end
 
   def delete_by_code(code) do
@@ -46,10 +59,10 @@ defmodule SbCouponsApi.Modules.PromoCode do
     |> SbCouponsApi.Repo.soft_delete()
   end
 
-  def changeset(promo_code, attrs) do
+  def changeset(promo_code, attrs \\ %{}) do
     promo_code
-    |> cast(attrs, [:code, :active, :expiration, :worths_up_to, :event_id])
-    |> validate_required([:code, :expiration, :worths_up_to, :event_id])
+    |> cast(attrs, [:code, :active, :expires_at, :worths_up_to])
+    |> validate_required([:code, :expires_at, :worths_up_to])
     |> unique_constraint(:code)
     |> cast_assoc(:event)
   end
