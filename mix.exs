@@ -23,6 +23,7 @@ defmodule SbCouponsApi.MixProject do
   # Run "mix help deps" to learn about dependencies.
   defp deps do
     [
+      {:confex, "~> 3.4.0"},
       {:envy, "~> 1.1.1"},
       {:ecto_sql, "~> 3.0"},
       {:ecto_soft_delete, "~> 1.0"},

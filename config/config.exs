@@ -32,7 +32,7 @@ use Mix.Config
 config :sb_coupons_api, ecto_repos: [SbCouponsApi.Repo]
 
 config :sb_coupons_api, SbCouponsApi.Repo,
-  database: "sb_coupons_#{Mix.env()}",
+  database: System.get_env("POSTGRES_DATABASE") || "sb_coupons_#{Mix.env()}",
   username: System.get_env("POSTGRES_USER"),
   password: System.get_env("POSTGRES_PASSWORD"),
   hostname: System.get_env("POSTGRES_HOSTNAME"),
@@ -48,14 +48,29 @@ config :sb_coupons_api, :json_library, Jason
 
 config :money, default_currency: :UGX
 
+# port =
+#   System.get_env("PORT")
+#   |> IO.inspect()
+
+# host: "sb-coupons-api",
+# url: [scheme: "http", host: "sb-coupons-api.herokupp.com", port: port],
+
 config :sb_coupons_api, SbCouponsApi.Maru,
   adapter: Plug.Adapters.Cowboy,
   plug: SbCouponsApi.API,
   scheme: :http,
   ip: {0, 0, 0, 0},
-  port: System.get_env("PORT") || 4000
+  bind_addr: "0.0.0.0",
+  port: {:system, "PORT"}
 
 config :sb_coupons_api, maru_servers: [SbCouponsApi.Maru]
+
+# config :maru, SbCouponsApi.API, http: [port: System.get_env("PORT") || 4000]
+# config :maru, SbCouponsApi.API, http: [port: {:system, System.get_env("PORT") || 4000}]
+# config :maru, SbCouponsApi.API, http: [port: {:system, System.get_env("PORT") || 4000}]
+# config :maru, SbCouponsApi.API, http: [port: {:system, "PORT"}]
+# config :maru, SbCouponsApi.API, http: [port: {:system, "PORT"}]
+# config :maru, SbCouponsApi.Maru, http: [port: {:system, "PORT"}]
 
 config :sb_coupons_api, SbCouponsApi.Cache,
   n_shards: 2,
