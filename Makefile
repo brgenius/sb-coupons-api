@@ -8,7 +8,7 @@ install-elixir:
 install:
 	mix deps.get
 
-setup: install-yarn install-elixir install create-db migrate
+setup: install-yarn install-elixir install compose-detached-db create-db migrate
 
 test-api-docs:
 	dredd ./apiary.apib http://127.0.0.1:4000

@@ -1,6 +1,8 @@
 defmodule SbCouponsApi.Router do
   use SbCouponsApi.Maru
 
+  require Maru.Types.Datetime
+
   namespace :V1 do
     resource :"promo-codes" do
       desc("List All Promo Codes")
@@ -52,14 +54,12 @@ defmodule SbCouponsApi.Router do
           requires(:id, type: :integer)
           requires(:code, type: :string)
           requires(:worths_up_to, type: :integer)
-          requires(:expires_at, type: :string)
+          requires(:expires_at, type: :datetime)
 
           requires :event, type: Map do
             requires(:id, type: :integer)
             requires(:venue, type: :string)
             requires(:radius, type: :integer)
-            requires(:lat, type: :float)
-            requires(:lon, type: :float)
           end
         end
 

@@ -41,7 +41,7 @@ defmodule SbCouponsApi.Modules.PromoCode do
   end
 
   def create(promo_code) do
-    changeset(%PromoCode{}, promo_code)
+    prepare_castset(%PromoCode{}, promo_code)
     |> SbCouponsApi.CacheableRepo.insert_or_update()
   end
 
@@ -49,21 +49,30 @@ defmodule SbCouponsApi.Modules.PromoCode do
     __MODULE__
     |> SbCouponsApi.Repo.get!(args[:id])
     |> SbCouponsApi.Repo.preload(:event)
-    |> changeset(args)
+    |> prepare_changeset(args)
     |> SbCouponsApi.CacheableRepo.update()
   end
 
   def delete_by_code(code) do
-    SbCouponsApi.Repo.get_by(__MODULE__, code: code)
+    __MODULE__
+    |> SbCouponsApi.Repo.get_by(code: code)
     |> SbCouponsApi.Cache.delete()
     |> SbCouponsApi.Repo.soft_delete()
   end
 
-  def changeset(promo_code, attrs \\ %{}) do
+  def prepare_castset(promo_code, attrs \\ %{}) do
     promo_code
     |> cast(attrs, [:code, :active, :expires_at, :worths_up_to])
     |> validate_required([:code, :expires_at, :worths_up_to])
     |> unique_constraint(:code)
     |> cast_assoc(:event)
+  end
+
+  def prepare_changeset(promo_code, attrs \\ %{}) do
+    promo_code
+    |> change(attrs)
+    |> cast_assoc(:event)
+    |> unique_constraint(:code)
+    |> validate_required([:expires_at, :worths_up_to])
   end
 end

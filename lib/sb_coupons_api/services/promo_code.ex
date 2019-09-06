@@ -18,6 +18,14 @@ defmodule SbCouponsApi.Services.PromoCode do
   def update(promo_code) do
     promo_code
     |> PromoCode.update()
+    |> IO.inspect()
+    # |> case do
+    #   {:ok, result} ->
+    #     result
+    #
+    #   {:error, error} ->
+    #     error
+    # end
   end
 
   def delete_by_code(code) do
