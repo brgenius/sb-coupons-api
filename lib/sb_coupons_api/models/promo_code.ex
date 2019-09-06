@@ -66,15 +66,20 @@ defmodule SbCouponsApi.Modules.PromoCode do
       |> SbCouponsApi.CacheableRepo.get_by!(code: args[:code])
       |> SbCouponsApi.Repo.preload(:event)
 
+    destination = SbCouponsApi.Services.Directions.check_geolocation(args)
     polyline = SbCouponsApi.Services.Directions.check_polyline(args)
-
-    geolocation = SbCouponsApi.Services.Directions.check_geolocation(args)
+    valid = SbCouponsApi.Services.Directions.validate_boundaries(
+      promo_code.event.radius,
+      destination[:destination],
+      {promo_code.event.lat, promo_code.event.lon}
+    )
 
     Map.from_struct(promo_code)
     |> Map.pop(:__meta__)
     |> elem(1)
+    |> Map.merge(destination)
     |> Map.merge(polyline)
-    |> Map.merge(geolocation)
+    |> Map.merge(valid)
   end
 
   def prepare_castset(promo_code, attrs \\ %{}) do

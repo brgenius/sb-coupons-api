@@ -4,8 +4,6 @@ defmodule SbCouponsApi.Modules.Event do
   import Ecto.SoftDelete.Schema
   import Ecto.Changeset
 
-  import Helpers.Haversine
-
   @derive {Jason.Encoder, except: [:__meta__, :promo_codes, :deleted_at]}
   schema "events" do
     field(:name, :string)

@@ -1,4 +1,20 @@
 defmodule SbCouponsApi.Services.Directions do
+  def validate_boundaries(radius, geolocation, destination) do
+    origin = {geolocation[:lat], geolocation[:lon]}
+    #
+    IO.inspect(radius)
+    IO.inspect(origin)
+    IO.inspect(destination)
+    #
+    # valid = Helpers.Haversine.distance(
+    #   origin,
+    #   destination
+    # ) <= 3000
+    valid = Distance.distance(origin, destination) <= radius
+
+    %{valid: valid}
+  end
+
   def check_polyline(args) do
     url = "https://maps.googleapis.com/maps/api/directions/json"
 
@@ -70,11 +86,11 @@ defmodule SbCouponsApi.Services.Directions do
             %{destination: %{lat: location["lat"], lon: location["lng"]}}
 
           _ ->
-            %{geolocation: %{lat: 0, lon: 0}}
+            %{destination: %{lat: 0, lon: 0}}
         end
 
       _ ->
-        %{polyline: nil}
+        %{destination: %{lat: 0, lon: 0}}
     end
   end
 end
