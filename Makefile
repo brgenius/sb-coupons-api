@@ -35,6 +35,14 @@ run:
 
 build-and-run: compile run
 
+prepare-test:
+	-MIX_ENV=test mix ecto.drop
+	MIX_ENV=test mix ecto.create
+	MIX_ENV=test mix ecto.migrate
+
+test:
+	mix espec
+
 compose-detached-db:
 	docker-compose run -d --service-ports sb-pg
 

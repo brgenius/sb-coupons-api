@@ -19,6 +19,18 @@ sb-coupons-api is the API for SafeBoda for promo codes. Here is possible to do t
 
 * Tests the validity of the promo code by passing a pickup origin and destination
 
+## Stack
+This project is built with:
+ * Elixir 1.8
+ * Erlang 20.1
+ * Apiary for api Documentation
+ * Maru a lightweight REST-like API framework
+ * Postgres for database
+ * ETS as cache
+ * Google Apis to Geo functions
+ * Heroku free for deployment
+ * Github as repository
+
 ## Docs
 Check the usage full docs [here](https://sbcouponsapi.docs.apiary.io/)
 
@@ -31,7 +43,7 @@ It uses a [CQRS](https://martinfowler.com/bliki/CQRS.html) aproach via nebulex_e
 The endpoint that validates the promo code will check Google directions api for results on how to draw the polyline between the two provided venues ( origin and destination )
 
 ## Deployment
-Heroku based deployment, for demonstration purposes
+Automated heroku based deployment, for demonstration purposes. Master is deployed as soon it changes.
 
 ## Local Setup
 
