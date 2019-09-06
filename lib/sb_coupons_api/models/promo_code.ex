@@ -68,10 +68,13 @@ defmodule SbCouponsApi.Modules.PromoCode do
 
     polyline = SbCouponsApi.Services.Directions.check_polyline(args)
 
+    geolocation = SbCouponsApi.Services.Directions.check_geolocation(args)
+
     Map.from_struct(promo_code)
     |> Map.pop(:__meta__)
     |> elem(1)
     |> Map.merge(polyline)
+    |> Map.merge(geolocation)
   end
 
   def prepare_castset(promo_code, attrs \\ %{}) do

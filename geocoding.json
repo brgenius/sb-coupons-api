@@ -1,0 +1,102 @@
+{
+   "results":[
+      {
+         "address_components":[
+            {
+               "long_name":"100",
+               "short_name":"100",
+               "types":[
+                  "street_number"
+               ]
+            },
+            {
+               "long_name":"Universal City Plaza",
+               "short_name":"Universal City Plaza",
+               "types":[
+                  "route"
+               ]
+            },
+            {
+               "long_name":"North Hollywood",
+               "short_name":"NoHo",
+               "types":[
+                  "neighborhood",
+                  "political"
+               ]
+            },
+            {
+               "long_name":"Universal City",
+               "short_name":"Universal City",
+               "types":[
+                  "locality",
+                  "political"
+               ]
+            },
+            {
+               "long_name":"Los Angeles County",
+               "short_name":"Los Angeles County",
+               "types":[
+                  "administrative_area_level_2",
+                  "political"
+               ]
+            },
+            {
+               "long_name":"California",
+               "short_name":"CA",
+               "types":[
+                  "administrative_area_level_1",
+                  "political"
+               ]
+            },
+            {
+               "long_name":"Estados Unidos",
+               "short_name":"US",
+               "types":[
+                  "country",
+                  "political"
+               ]
+            },
+            {
+               "long_name":"91602",
+               "short_name":"91602",
+               "types":[
+                  "postal_code"
+               ]
+            }
+         ],
+         "formatted_address":"100 Universal City Plaza, North Hollywood, CA 91602, EUA",
+         "geometry":{
+            "bounds":{
+               "northeast":{
+                  "lat":34.1362554,
+                  "lng":-118.3518877
+               },
+               "southwest":{
+                  "lat":34.13612200000001,
+                  "lng":-118.3521638
+               }
+            },
+            "location":{
+               "lat":34.1361918,
+               "lng":-118.3520161
+            },
+            "location_type":"ROOFTOP",
+            "viewport":{
+               "northeast":{
+                  "lat":34.13753768029151,
+                  "lng":-118.3506767697085
+               },
+               "southwest":{
+                  "lat":34.13483971970851,
+                  "lng":-118.3533747302915
+               }
+            }
+         },
+         "place_id":"ChIJVWvUgk6-woARXYwtrNCmqxg",
+         "types":[
+            "subpremise"
+         ]
+      }
+   ],
+   "status":"OK"
+}
