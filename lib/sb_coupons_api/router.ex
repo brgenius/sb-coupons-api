@@ -21,7 +21,7 @@ defmodule SbCouponsApi.Router do
       params do
         requires(:code, type: :string)
         requires(:worths_up_to, type: :integer)
-        requires(:expires_at, type: :string)
+        requires(:expires_at, type: :datetime)
 
         requires :event, type: Map do
           requires(:venue, type: :string)
@@ -32,8 +32,6 @@ defmodule SbCouponsApi.Router do
       end
 
       post do
-        conn
-
         case SbCouponsApi.Services.PromoCode.create(params) do
           {:ok, promo_code} ->
             conn
@@ -92,7 +90,15 @@ defmodule SbCouponsApi.Router do
         end
 
         delete do
-          json(conn, SbCouponsApi.Services.PromoCode.delete_by_code(params[:code]))
+          case SbCouponsApi.Services.PromoCode.delete_by_code(params[:code]) do
+            {:ok, response} ->
+              json(conn, response)
+
+            {:error, _} ->
+              conn
+              |> put_status(500)
+              |> text("Delete Failed")
+          end
         end
       end
     end

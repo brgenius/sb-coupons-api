@@ -4,11 +4,15 @@ defmodule SbCouponsApi.Modules.Event do
   import Ecto.SoftDelete.Schema
   import Ecto.Changeset
 
+  import Helpers.Haversine
+
   @derive {Jason.Encoder, except: [:__meta__, :promo_codes, :deleted_at]}
   schema "events" do
     field(:name, :string)
     field(:venue, :string)
     field(:radius, :integer)
+    field(:lat, :float)
+    field(:lon, :float)
 
     has_many(:promo_codes, SbCouponsApi.Modules.PromoCode)
 
@@ -18,7 +22,7 @@ defmodule SbCouponsApi.Modules.Event do
 
   def changeset(event, attrs \\ %{}) do
     event
-    |> cast(attrs, [:name, :venue, :radius])
-    |> validate_required([:venue, :radius])
+    |> cast(attrs, [:name, :venue, :radius, :lat, :lon])
+    |> validate_required([:venue, :radius, :lat, :lon])
   end
 end
