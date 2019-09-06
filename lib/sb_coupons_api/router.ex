@@ -33,8 +33,18 @@ defmodule SbCouponsApi.Router do
 
       post do
         conn
-        |> put_status(201)
-        |> json(SbCouponsApi.Services.PromoCode.create(params))
+
+        case SbCouponsApi.Services.PromoCode.create(params) do
+          {:ok, promo_code} ->
+            conn
+            |> put_status(201)
+            |> json(promo_code)
+
+          {:error, _} ->
+            conn
+            |> put_status(500)
+            |> text("Creation Failed")
+        end
       end
 
       route_param :code, type: :string do
@@ -64,7 +74,15 @@ defmodule SbCouponsApi.Router do
         end
 
         put do
-          json(conn, SbCouponsApi.Services.PromoCode.update(params))
+          case SbCouponsApi.Services.PromoCode.update(params) do
+            {:ok, promo_code} ->
+              json(conn, promo_code)
+
+            {:error, _} ->
+              conn
+              |> put_status(500)
+              |> text("Update Failed")
+          end
         end
 
         desc("Deletes a Promo Code")
