@@ -30,9 +30,9 @@ The API is published at https://sb-coupons-api.herokuapp.com/ for test proposals
 It uses a [CQRS](https://martinfowler.com/bliki/CQRS.html) aproach via nebulex_ecto, wich will act as a man in middle between elixir ETS and the Postgres repository.
 The endpoint that validates the promo code will check Google directions api for results on how to draw the polyline between the two provided venues ( origin and destination )
 
-##Local Setup
+## Local Setup
 
-[Docker](https://docs.docker.com/install/) and [Docker compose](https://docs.docker.com/compose/install/) are required to run easyly this application locally (). After installed, run:
+[Docker](https://docs.docker.com/install/) and [Docker compose](https://docs.docker.com/compose/install/) are required to run easyly this application locally. After installed, run:
 
 ```make setup```
 
