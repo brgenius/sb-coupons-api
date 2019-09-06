@@ -55,9 +55,23 @@ defmodule SbCouponsApi.Modules.PromoCode do
 
   def delete_by_code(code) do
     __MODULE__
-    |> SbCouponsApi.Repo.get_by(code: code)
+    |> SbCouponsApi.CacheableRepo.get_by(code: code)
     |> SbCouponsApi.Cache.delete()
     |> SbCouponsApi.Repo.soft_delete()
+  end
+
+  def validate(args) do
+    promo_code =
+      __MODULE__
+      |> SbCouponsApi.CacheableRepo.get_by!(code: args[:code])
+      |> SbCouponsApi.Repo.preload(:event)
+
+    polyline = SbCouponsApi.Services.Directions.check_polyline(args)
+
+    Map.from_struct(promo_code)
+    |> Map.pop(:__meta__)
+    |> elem(1)
+    |> Map.merge(polyline)
   end
 
   def prepare_castset(promo_code, attrs \\ %{}) do

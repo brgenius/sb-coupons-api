@@ -100,6 +100,18 @@ defmodule SbCouponsApi.Router do
               |> text("Delete Failed")
           end
         end
+
+        desc("Validates a Promo Code")
+
+        params do
+          requires(:code, type: :string)
+          requires(:pickup_venue, type: :string)
+          requires(:destination_venue, type: :string)
+        end
+
+        get :validate do
+          json(conn, SbCouponsApi.Services.PromoCode.validate(params))
+        end
       end
     end
   end

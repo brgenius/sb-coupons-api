@@ -1,11 +1,13 @@
 {
-    "code": "SB-WEEKEND-10",
-    "active": false,
-    "worths_up_to": 1000,
+    "code": "SB-WEEKEND",
+    "active": true,
+    "worths_up_to": 100,
     "created_at": "2019-08-31T08:40:51.620Z",
     "expires_at": "2019-09-30T08:40:51.620Z",
     "event": {
         "venue": "Terman Ave, Kampala, Uganda",
-        "radius": 3000
+        "radius": 3000,
+        "lat": 0.317455,
+        "lon": 32.58095
     }
 }

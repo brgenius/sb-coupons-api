@@ -1,0 +1,144 @@
+%{
+  "geocoded_waypoints" => [
+    %{
+      "geocoder_status" => "OK",
+      "place_id" => "ChIJodkqGmG8fRcRpAN5jB5Wlvg",
+      "types" => ["route"]
+    },
+    %{
+      "geocoder_status" => "OK",
+      "partial_match" => true,
+      "place_id" => "ChIJHY5e9X-7fRcR-Z74Q6cTY4k",
+      "types" => ["route"]
+    }
+  ],
+  "routes" => [
+    %{
+      "bounds" => %{
+        "northeast" => %{"lat" => 0.3169294, "lng" => 32.586165},
+        "southwest" => %{"lat" => 0.3024285, "lng" => 32.5780198}
+      },
+      "copyrights" => "Map data ©2019",
+      "legs" => [
+        %{
+          "distance" => %{"text" => "2.9 km", "value" => 2938},
+          "duration" => %{"text" => "11 mins", "value" => 637},
+          "end_address" => "Ternan Ave, Kampala, Uganda",
+          "end_location" => %{"lat" => 0.3169294, "lng" => 32.5820675},
+          "start_address" => "Nsambya Rd, Kampala, Uganda",
+          "start_location" => %{"lat" => 0.3024285, "lng" => 32.586165},
+          "steps" => [
+            %{
+              "distance" => %{"text" => "0.2 km", "value" => 205},
+              "duration" => %{"text" => "1 min", "value" => 33},
+              "end_location" => %{"lat" => 0.3039118, "lng" => 32.5850846},
+              "html_instructions" => "Head <b>northwest</b> on <b>Nsambya Rd</b> toward <b>Ggaba Road</b>",
+              "polyline" => %{
+                "points" => "eaz@on{eEYT}@n@URGBwAfAOJMHKFGBC@c@L"
+              },
+              "start_location" => %{"lat" => 0.3024285, "lng" => 32.586165},
+              "travel_mode" => "DRIVING"
+            },
+            %{
+              "distance" => %{"text" => "0.4 km", "value" => 410},
+              "duration" => %{"text" => "1 min", "value" => 71},
+              "end_location" => %{
+                "lat" => 0.3069905,
+                "lng" => 32.58312180000001
+              },
+              "html_instructions" => "Slight <b>left</b> to stay on <b>Nsambya Rd</b>",
+              "maneuver" => "turn-slight-left",
+              "polyline" => %{
+                "points" => "mjz@wg{eEWZUTON]ZOLC@gCxA_DbBeBr@m@TKBIBGB]D"
+              },
+              "start_location" => %{"lat" => 0.3039118, "lng" => 32.5850846},
+              "travel_mode" => "DRIVING"
+            },
+            %{
+              "distance" => %{"text" => "0.6 km", "value" => 566},
+              "duration" => %{"text" => "2 mins", "value" => 113},
+              "end_location" => %{"lat" => 0.3073472, "lng" => 32.5780803},
+              "html_instructions" => "Turn <b>left</b> to stay on <b>Nsambya Rd</b>",
+              "maneuver" => "turn-left",
+              "polyline" => %{
+                "points" => "u}z@o{zeEc@rGCPAb@CrA@^EtC@vABjB@vA?r@QXG`@CN"
+              },
+              "start_location" => %{
+                "lat" => 0.3069905,
+                "lng" => 32.58312180000001
+              },
+              "travel_mode" => "DRIVING"
+            },
+            %{
+              "distance" => %{"text" => "0.9 km", "value" => 851},
+              "duration" => %{"text" => "4 mins", "value" => 211},
+              "end_location" => %{"lat" => 0.3128507, "lng" => 32.5825463},
+              "html_instructions" => "Turn <b>right</b> onto <b>Entebbe Road</b>/<wbr/><b>A109</b>",
+              "maneuver" => "turn-right",
+              "polyline" => %{
+                "points" => "}_{@_|yeESBC@C?I@IAg@Da@?oBKe@?MAe@?OGICCCACw@}AaAuBaAuB]i@c@q@_@g@W[SQ]Wc@c@CAs@s@w@_Ae@c@UWiAiA]YKGKEMEa@E"
+              },
+              "start_location" => %{"lat" => 0.3073472, "lng" => 32.5780803},
+              "travel_mode" => "DRIVING"
+            },
+            %{
+              "distance" => %{"text" => "0.1 km", "value" => 122},
+              "duration" => %{"text" => "1 min", "value" => 31},
+              "end_location" => %{"lat" => 0.3130935, "lng" => 32.5814806},
+              "html_instructions" => "Turn <b>left</b> onto <b>Kampala Road</b>",
+              "maneuver" => "turn-left",
+              "polyline" => %{"points" => "ib|@}wzeEMx@a@zC"},
+              "start_location" => %{"lat" => 0.3128507, "lng" => 32.5825463},
+              "travel_mode" => "DRIVING"
+            },
+            %{
+              "distance" => %{"text" => "0.3 km", "value" => 290},
+              "duration" => %{"text" => "1 min", "value" => 73},
+              "end_location" => %{"lat" => 0.3140221, "lng" => 32.5790989},
+              "html_instructions" => "Continue straight to stay on <b>Kampala Road</b>",
+              "maneuver" => "straight",
+              "polyline" => %{
+                "points" => "yc|@gqzeEWtBSdBId@EZIVQVOVSZSZGJ]j@CD"
+              },
+              "start_location" => %{"lat" => 0.3130935, "lng" => 32.5814806},
+              "travel_mode" => "DRIVING"
+            },
+            %{
+              "distance" => %{"text" => "0.2 km", "value" => 246},
+              "duration" => %{"text" => "1 min", "value" => 61},
+              "end_location" => %{"lat" => 0.3158833, "lng" => 32.5802865},
+              "html_instructions" => "Turn <b>right</b> onto <b>The Square 2</b>",
+              "maneuver" => "turn-right",
+              "polyline" => %{
+                "points" => "si|@kbzeEMI[UQKKGOKYQIEOKk@[mAs@aAe@k@S"
+              },
+              "start_location" => %{"lat" => 0.3140221, "lng" => 32.5790989},
+              "travel_mode" => "DRIVING"
+            },
+            %{
+              "distance" => %{"text" => "0.2 km", "value" => 248},
+              "duration" => %{"text" => "1 min", "value" => 44},
+              "end_location" => %{"lat" => 0.3169294, "lng" => 32.5820675},
+              "html_instructions" => "At the roundabout, take the <b>2nd</b> exit onto <b>Ternan Ave</b>",
+              "maneuver" => "roundabout-left",
+              "polyline" => %{
+                "points" => "gu|@yizeEA@A@C?A@A?C@A?A?C?A?C?CAC?AAA?AACAAAAA?AAAAA?CAA?CAA?C?A?C@A?CEC?CAAAOAAIOQe@gAuCYw@M]"
+              },
+              "start_location" => %{"lat" => 0.3158833, "lng" => 32.5802865},
+              "travel_mode" => "DRIVING"
+            }
+          ],
+          "traffic_speed_entry" => [],
+          "via_waypoint" => []
+        }
+      ],
+      "overview_polyline" => %{
+        "points" => "eaz@on{eEuB|AaCdBKDc@LWZe@d@m@h@kCzA_DbBeBr@y@XQF]Dc@rGEt@CrA@^EtC@vADbE?r@QXKp@WD_ADeEMe@?OGICEGyBsE_B_DcAyAk@m@aA{@w@u@}AcB_BaBi@a@YKa@EMx@y@pG]jCOr@a@n@mAnBCDMIm@a@_Ak@{@g@oCyAk@SCBKBI?UGIO?UGICQ[u@oBkF"
+      },
+      "summary" => "Nsambya Rd and A109",
+      "warnings" => [],
+      "waypoint_order" => []
+    }
+  ],
+  "status" => "OK"
+}

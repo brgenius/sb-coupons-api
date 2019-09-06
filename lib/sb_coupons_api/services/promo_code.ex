@@ -19,6 +19,7 @@ defmodule SbCouponsApi.Services.PromoCode do
     promo_code
     |> PromoCode.update()
     |> IO.inspect()
+
     # |> case do
     #   {:ok, result} ->
     #     result
@@ -26,6 +27,12 @@ defmodule SbCouponsApi.Services.PromoCode do
     #   {:error, error} ->
     #     error
     # end
+  end
+
+  def validate(args) do
+    args
+    |> IO.inspect()
+    |> PromoCode.validate()
   end
 
   def delete_by_code(code) do
