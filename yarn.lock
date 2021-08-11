@@ -353,7 +353,7 @@ dredd-transactions@9.0.6:
     fury-adapter-swagger "0.27.2"
     uri-template "1.0.1"
 
-dredd@^12.0.5:
+dredd@12.0.5:
   version "12.0.5"
   resolved "https://registry.yarnpkg.com/dredd/-/dredd-12.0.5.tgz#4faa8cfd8d3a4f5c35b97406b3891b2c6ee11b7b"
   integrity sha512-xZTGKX+mj8tXA3CVieOwfb941WPIkbh3dPyvKn0u2ukI/9jn/+18jgDcKWEidk7AF/jpycnVXNYa1F93CuGv8A==
@@ -1045,9 +1045,9 @@ path-key@^2.0.1:
   integrity sha1-QRyttXTFoUDTpLGRDUDYDMn0C0A=
 
 path-parse@^1.0.6:
-  version "1.0.6"
-  resolved "https://registry.yarnpkg.com/path-parse/-/path-parse-1.0.6.tgz#d62dbb5679405d72c4737ec58600e9ddcf06d24c"
-  integrity sha512-GSmOT2EbHrINBf9SR7CDELwlJ8AENk3Qn7OikK4nFYAu3Ote2+JYNVvkpAEQm3/TLNEJFD/xZJjzyxg3KBWOzw==
+  version "1.0.7"
+  resolved "https://registry.yarnpkg.com/path-parse/-/path-parse-1.0.7.tgz#fbc114b60ca42b30d9daf5858e4bd68bbedb6735"
+  integrity sha512-LDJzPVEEEPR+y48z93A0Ed0yXb8pAByGWo/k5YYdYgpY2/2EsOsksJrq7lOHxryrVOn1ejG6oAp8ahvOIQD8sw==
 
 pathval@^1.1.0:
   version "1.1.0"
